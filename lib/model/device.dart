@@ -21,21 +21,6 @@ class Device {
     ..add(
       Device(
         id: 1,
-        name: 'Refrigerator',
-        isActive: false,
-        icon: Assets.refrigeratorPng,
-        linearGradient: const LinearGradient(
-          colors: [
-            AppColors.refrigeratorDeviceContainer,
-            AppColors.refrigeratorDeviceContainer,
-          ],
-          stops: [0.0, 1.0],
-        ),
-      ),
-    )
-    ..add(
-      Device(
-        id: 2,
         name: 'Music',
         isActive: false,
         icon: Assets.musicPng,
@@ -49,7 +34,7 @@ class Device {
     )
     ..add(
       Device(
-        id: 3,
+        id: 2,
         name: 'Router',
         isActive: false,
         icon: Assets.routerPng,
@@ -61,8 +46,8 @@ class Device {
     )
     ..add(
       Device(
-        id: 4,
-        name: 'Lamps',
+        id: 3,
+        name: 'Lighting',
         isActive: false,
         icon: Assets.lampPng,
         linearGradient: const LinearGradient(

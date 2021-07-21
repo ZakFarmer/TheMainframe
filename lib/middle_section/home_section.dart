@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+import 'package:http/http.dart' as http;
+
 import '../common/common.dart';
 import '../common/vertical_spacer.dart';
 import '../constants/constant.dart';
@@ -21,19 +23,18 @@ class HomeSectionWidget extends StatefulWidget {
 class _HomeSectionWidgetState extends State<HomeSectionWidget> {
   String currentRoom = 'Living Room';
 
+  Future<http.Response> requestZootBreak() {
+    return http.post(Uri.parse('http://192.168.1.100:8000/api/callzootbreak'));
+  }
+
+  bool callZootBreak() {
+
+  }
+
   static final List<Appliance> appliances = [
     Appliance(
       1,
-      name: 'Refrigerator',
-      activeIcon: Assets.refrigeratorActivePng,
-      inActiveIcon: Assets.refrigeratorInActivePng,
-      selectedIcon: Assets.refrigeratorSelectedPng,
-      isActive: true,
-      selected: true,
-    ),
-    Appliance(
-      2,
-      name: 'Temperature',
+      name: 'Zoot Break',
       activeIcon: Assets.flashActivePng,
       inActiveIcon: Assets.flashInActivePng,
       selectedIcon: Assets.flashSelectedPng,
@@ -41,8 +42,8 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
       selected: false,
     ),
     Appliance(
-      3,
-      name: 'Air Conditioner',
+      2,
+      name: 'Air Purifier',
       activeIcon: Assets.acActivePng,
       inActiveIcon: Assets.acInActivePng,
       selectedIcon: Assets.acSelectedPng,
@@ -50,7 +51,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
       selected: false,
     ),
     Appliance(
-      4,
+      3,
       name: 'Lights',
       activeIcon: Assets.allLightsActivePng,
       inActiveIcon: Assets.allLightsInActivePng,
@@ -63,6 +64,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle style = ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white));
     return Container(
       width: MediaQuery.of(context).size.width * .6 - 100,
       height: MediaQuery.of(context).size.height - 296,
@@ -70,7 +72,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
         children: [
           _selectRoomWidget,
           const VerticalSpacer(),
-          SizedBox(
+          /*SizedBox(
             width: MediaQuery.of(context).size.width * .6 - 100,
             height: 117,
             child: _electronicAppliances,
@@ -82,6 +84,14 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
             itemOn: sleetedAppliance.isActive,
             onItemStateChange: (value) =>
                 setState(() => sleetedAppliance.isActive = value),
+          ),*/
+          Padding(
+            padding: EdgeInsets.only(top: 80.0),
+            child: TextButton(
+              style: style,
+              onPressed: () { callZootBreak(); },
+              child: const Text('Call Zoot Break', style: const TextStyle(fontSize: 52)),
+            ),
           ),
         ],
       ),
@@ -120,7 +130,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text(
-          "Scarlett's Home",
+          "Our Home",
           style: TextStyle(
             color: AppColors.white,
             fontSize: 18,
@@ -132,7 +142,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const IconWithText(
+            /*const IconWithText(
               icon: Assets.dropPng,
               label: '35%',
             ),
@@ -141,7 +151,7 @@ class _HomeSectionWidgetState extends State<HomeSectionWidget> {
               icon: Assets.thermometerPng,
               label: '+25${'\u2103'}',
             ),
-            const HorizontalSpacer(space: 16),
+            const HorizontalSpacer(space: 16),*/
             ContentContainer(
               borderRadius: 8,
               child: Container(

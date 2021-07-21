@@ -24,46 +24,37 @@ class Profile {
   static List<Profile> get list => _profiles
     ..add(
       Profile(
-        avatar: Assets.jasicaPng,
+        avatar: Assets.zakPng,
         id: 1,
-        firstName: 'Jasica',
-        lastName: 'Wingleton',
+        firstName: 'Zak',
+        lastName: '',
         role: 'Admin',
         selected: true,
       ),
     )
     ..add(
       Profile(
-        avatar: Assets.nariyaPng,
+        avatar: Assets.casparPng,
         id: 2,
-        firstName: 'Nariya',
+        firstName: 'Caspar',
         lastName: '',
         role: 'Full Access',
       ),
     )
     ..add(
       Profile(
-        avatar: Assets.riyaPng,
+        avatar: Assets.kimPng,
         id: 3,
-        firstName: 'Riya',
+        firstName: 'Kim',
         lastName: '',
         role: 'Full Access',
       ),
     )
     ..add(
       Profile(
-        avatar: Assets.dadPng,
+        avatar: Assets.theoPng,
         id: 4,
-        firstName: 'Dad',
-        lastName: '',
-        role: 'Full Access',
-      ),
-    )
-    ..add(
-      Profile(
-        avatar: Assets.momPng,
-        id: 5,
-        firstName: 'Mom',
+        firstName: 'Theo',
         lastName: '',
         role: 'Full Access',
       ),

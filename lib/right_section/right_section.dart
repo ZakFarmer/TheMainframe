@@ -35,99 +35,100 @@ class _RightSectionState extends State<RightSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 32,
-                  ),
-                  child: ScaledIconButton(
-                    scale: 1,
-                    icon: Assets.settingsPng,
-                    onClick: () {
-                      print('Setting button clicked');
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 32),
-                  child: ScaledIconButton(
-                    icon: Assets.activeNotificationsPng,
-                    onClick: () {
-                      print('Notification button clicked');
-                    },
-                  ),
-                ),
-              ],
-            ),
-            SelectProfileWidget(
-              profiles: profiles,
-              onProfileChange: (profileId) {
-                print('Profile selected: $profileId');
-                setState(() {
-                  profiles.forEach((profile) {
-                    if (profile.id == profileId) {
-                      profile.selected = true;
-                    } else {
-                      profile.selected = false;
-                    }
-                  });
-                });
-              },
-            ),
-          ],
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width * .4,
-          height: MediaQuery.of(context).size.height - 80,
-          margin: const EdgeInsets.only(top: 16),
-          padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
-          decoration: BoxDecoration(
-            color: AppColors.rightSectionFill,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-            ),
-          ),
-          child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _devicesSection,
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: DeviceListWidget(
-                  devices: devices,
-                  onDeviceStateChange: (value, index) {
-                    setState(() {
-                      devices[index].isActive = value;
-                    });
-                  },
-                ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 28,
+                    ),
+                    child: ScaledIconButton(
+                      scale: 1,
+                      icon: Assets.settingsPng,
+                      onClick: () {
+                        print('Setting button clicked');
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28),
+                    child: ScaledIconButton(
+                      icon: Assets.activeNotificationsPng,
+                      onClick: () {
+                        print('Notification button clicked');
+                      },
+                    ),
+                  ),
+                ],
               ),
-              const VerticalSpacer(space: 8),
-              _membersSections,
-              const VerticalSpacer(space: 8),
-              ProfileListWidget(
+              SelectProfileWidget(
                 profiles: profiles,
-                onProfileSelect: (profile) {
-                  print('Profile Selected: ${profile.firstName}');
+                onProfileChange: (profileId) {
+                  print('Profile selected: $profileId');
+                  setState(() {
+                    profiles.forEach((profile) {
+                      if (profile.id == profileId) {
+                        profile.selected = true;
+                      } else {
+                        profile.selected = false;
+                      }
+                    });
+                  });
                 },
               ),
-              const VerticalSpacer(space: 8),
-              _powerCConsumptionsSection,
-              const VerticalSpacer(space: 8),
-              PowerConsumptionGraph(
-                width: MediaQuery.of(context).size.width * .4,
-                height: MediaQuery.of(context).size.height - 586,
-              ),
-              const VerticalSpacer(),
             ],
           ),
-        ),
-      ],
-    );
+          Container(
+            width: MediaQuery.of(context).size.width * .4,
+            height: MediaQuery.of(context).size.height - 80,
+            margin: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 16, left: 28, right: 28),
+            decoration: BoxDecoration(
+              color: AppColors.rightSectionFill,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+              ),
+            ),
+            child: Column(
+              children: [
+                _devicesSection,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: DeviceListWidget(
+                    devices: devices,
+                    onDeviceStateChange: (value, index) {
+                      setState(() {
+                        devices[index].isActive = value;
+                      });
+                    },
+                  ),
+                ),
+                /*const VerticalSpacer(space: 20),
+                _moviesToWatchSection,
+                _membersSections,
+                const VerticalSpacer(space: 8),
+                ProfileListWidget(
+                  profiles: profiles,
+                  onProfileSelect: (profile) {
+                    print('Profile Selected: ${profile.firstName}');
+                  },
+              ),
+                const VerticalSpacer(space: 8),
+                _powerCConsumptionsSection,
+                const VerticalSpacer(space: 8),
+                PowerConsumptionGraph(
+                  width: MediaQuery.of(context).size.width * .4,
+                  height: MediaQuery.of(context).size.height - 586,
+                ),
+                const VerticalSpacer(),*/
+              ],
+            ),
+          ),
+        ],
+      );
   }
 
   Widget get _membersSections {
@@ -146,6 +147,90 @@ class _RightSectionState extends State<RightSection> {
         ),
       ],
     );
+  }
+
+  Widget get _moviesToWatchSection {
+      return ContentContainer(
+        borderRadius: 16,
+        child: Container(
+          width: MediaQuery.of(context).size.width * .6 - 100,
+          height: MediaQuery.of(context).size.height - 486,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Positioned(
+                top: 16,
+                left: 16,
+                right: 16,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Movies to Watch",
+                          style: const TextStyle(
+                            color: AppColors.white,
+                            fontSize: 18,
+                            letterSpacing: .57,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 40,
+                left: 16,
+                right: 16,
+                child: Table(
+                      border: TableBorder.all(color: AppColors.white),
+                      children: [
+                          TableRow(children: [
+                              Column(
+                                  children: [
+                                      Center(child: Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text('TITLE', style: TextStyle(fontSize: 16, color: AppColors.white))
+                                      ))
+                                  ],
+                              ),
+                              Column(
+                                  children: [
+                                      Center(child: Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text('RECOMMENDED BY', style: TextStyle(fontSize: 16, color: AppColors.white))
+                                      ))
+                                  ],
+                              ),
+                          ]),
+                          TableRow(children: [
+                              Column(
+                                  children: [
+                                      Center(child: Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text('GOODFELLAS', style: TextStyle(fontSize: 16, color: AppColors.white))
+                                      ))
+                                  ],
+                              ),
+                              Column(
+                                  children: [
+                                      Center(child: Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Text('ZAK', style: TextStyle(fontSize: 16, color: AppColors.white))
+                                      ))
+                                  ],
+                              ),
+                          ]),
+                      ],
+                  ),
+              ),
+            ],
+          ),
+        ),
+      );
+
   }
 
   Widget get _powerCConsumptionsSection {

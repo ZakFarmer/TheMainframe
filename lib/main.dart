@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
+import 'package:http/http.dart' as http;
 
 import 'common/common.dart';
 import 'constants/app_colors.dart';
@@ -9,7 +11,11 @@ import 'navigation_rail.dart';
 import 'right_section/right_section.dart';
 import 'strings.dart';
 
+import 'globals.dart' as globals;
+
 void main() {
+  FlutterError.onError = null;
+  runApp(MyApp());
   runApp(MyApp());
 }
 
@@ -21,6 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'UberMove',
       ),
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
@@ -33,11 +40,32 @@ class MyHomePage extends StatefulWidget {
     Key key,
   }) : super(key: key);
 
+
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  /*Future<String> fetchFact() async {
+    final url = Uri.parse('localhost:8000/api/getsetting/fact');
+    http.Response response = await http.get(url, headers: {'Accept': 'application/json'});
+    return response.body;
+  }
+
+  Future<String> futureFact;*/
+
+  @override
+  void initState() {
+    super.initState();
+    Wakelock.enable();
+    /*fetchFact().then((String result) {
+      setState(() {
+        globals.fact = result;
+      });
+    });*/
+  }
+
   final List<NavigationDestination> destinations = [
     NavigationDestination(
       icon: Assets.homePng,
@@ -72,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Row(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height - 200,
             width: 100,
             color: AppColors.mainFill,
             child: MainNavigationRail(
@@ -86,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const HorizontalSpacer(
-            space: 32,
+            space: 30,
           ),
           Container(
             height: MediaQuery.of(context).size.height,

@@ -6,7 +6,7 @@ class AppColors {
   static const grey = Colors.grey;
   static const white = Color(0xFFFFFFFF);
   static const controllerBorder = Color(0xFF8A88B7);
-  static const mainFill = Color(0xFF121220);
+  static const mainFill = Color(0xFF000000);
   static const containerFill = Color(0xFF151423);
   static const containerBorder = Color(0xFF26243F);
   static const containerShadowLeft = Color(0xFF232239);

@@ -21,9 +21,9 @@ class Assets {
   static const allLightsInActivePng = 'assets/icons/all_lights_inactive.png';
   static const allLightsSelectedPng = 'assets/icons/all_lights_selected.png';
 
-  static const flashActivePng = 'assets/icons/flash_active.png';
-  static const flashInActivePng = 'assets/icons/flash_inactive.png';
-  static const flashSelectedPng = 'assets/icons/flash_selected.png';
+  static const flashActivePng = 'assets/icons/zoot.png';
+  static const flashInActivePng = 'assets/icons/zoot.png';
+  static const flashSelectedPng = 'assets/icons/zoot.png';
 
   static const refrigeratorActivePng = 'assets/icons/refrigerator_active.png';
   static const refrigeratorInActivePng =
@@ -43,9 +43,8 @@ class Assets {
   static const refrigeratorPng = 'assets/icons/refrigerator.png';
   static const calenderPng = 'assets/icons/calender.png';
 
-  static const jasicaPng = 'assets/avatars/jasica.png';
-  static const nariyaPng = 'assets/avatars/nariya.png';
-  static const riyaPng = 'assets/avatars/riya.png';
-  static const dadPng = 'assets/avatars/dad.png';
-  static const momPng = 'assets/avatars/mom.png';
+  static const zakPng = 'assets/avatars/zak.png';
+  static const casparPng = 'assets/avatars/caspar.png';
+  static const kimPng = 'assets/avatars/kim.png';
+  static const theoPng = 'assets/avatars/theo.png';
 }
